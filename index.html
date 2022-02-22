@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpine JS CDN</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    p>p>p>h1 {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="text-2xl" x-data="{head : 'This is Heading', open : false, btn : 'Toggle me!'}">
+    <h1 x-text="head"></h1>
+    <button x-on:click="open = !open" x-text="btn"></button>
+    <h2 x-show="open" x-on:click.away="open = false">Showing</h2>
+    <p></p>
+  </div>
+
+  <script>
+
+  </script>
+</body>
+
+</html>
