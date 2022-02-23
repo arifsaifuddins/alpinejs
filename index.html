@@ -5,28 +5,56 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alpine JS CDN</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Alpine JS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    p>p>p>h1 {
-      background-color: blue;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="text-2xl" x-data="{head : 'This is Heading', open : false, btn : 'Toggle me!'}">
-    <h1 x-text="head"></h1>
-    <button x-on:click="open = !open" x-text="btn"></button>
-    <h2 x-show="open" x-on:click.away="open = false">Showing</h2>
-    <p></p>
+
+  <!-- navbar -->
+
+  <div
+    class="fixed h-16 flex items-center justify-between px-4 sm:px-20 lg:px-40 top-0 right-0 left-0 shadow-lg text-slate-200 bg-white">
+    <div class="flex items-center">
+      <img src="./arief.jpeg " alt="Arief" class="rounded-full h-11 w-1h-11 border-2 border-slate-800 cursor-pointer">
+      <h1 class="ml-2 text-2xl font-bold text-yellow-500 underline">Saifud<span class="text-slate-800">Dien</span></h1>
+    </div>
+    <div class="justify-between items-center md:gap-8 text-yellow-500 font-bold hidden md:flex">
+      <a href="#" class="hover:text-slate-500">Home</a>
+      <a href="#" class="hover:text-slate-500">About</a>
+      <a href="#" class="hover:text-slate-500">Contact</a>
+      <a href="#" class="hover:text-slate-500">Product</a>
+    </div>
+    <div class="flex flex-col p-1 items-center justify-between h-8 cursor-pointer md:hidden ">
+      <span class="h-1 rounded-md w-7 bg-yellow-500 block"></span>
+      <span class="h-1 rounded-md w-6 bg-slate-800 block"></span>
+      <span class="h-1 rounded-md w-8 bg-yellow-500 block"></span>
+    </div>
   </div>
 
-  <script>
+  <!-- sidebar -->
 
-  </script>
+  <div
+    class="justify-start gap-3 items-start pt-20 text-md sm:w-80 sm:pr-20 w-52 px-5 -z-10 text-slate-800 font-bold fixed top-0 bottom-0  -right-[100%] flex flex-col md:hidden shadow-lg bg-white">
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Home</a>
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">About</a>
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Contact</a>
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Product</a>
+  </div>
+
+  <!-- popup -->
+
+  <div
+    class="w-44 shadow-lg rounded-lg p-5 flex flex-col text-slate-800 font-bold justify-start gap-3 items-start absolute top-20 left-4 sm:left-20 lg:left-40 bg-white">
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Profile</a>
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Setting</a>
+    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Log Out</a>
+  </div>
+
 </body>
 
 </html>
