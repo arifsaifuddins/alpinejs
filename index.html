@@ -120,7 +120,7 @@
           <div class="w-full mt-3 rounded-lg shadow flex items-center justify-between px-4 py-2">
             <div class="font-bold flex items-center w-[95%]">
               <input type="checkbox" x-model="todo.isFinish" class="cursor-pointer h-10 outline-yellow-500 mr-3">
-              <h3 class="text-xl w-[90%] overflow-x-auto title" x-bind:class="{ 'line-through' : todo.isFinish }"
+              <h3 class="text-xl w-[90%] overflow-x-scroll title" x-bind:class="{ 'line-through' : todo.isFinish }"
                 x-text="todo.title"></h3>
             </div>
             <div class="font-bold" @click="removeTodo(todo.id)"><i class="fa fa-xmark text-xl cursor-pointer"></i>
