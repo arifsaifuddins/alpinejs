@@ -1,0 +1,12 @@
+h3.title::-webkit-scrollbar {
+  height: 2px;
+}
+
+h3.title::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+h3.title::-webkit-scrollbar-thumb {
+  background: #444;
+}
+

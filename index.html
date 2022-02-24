@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alpine JS</title>
+  <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,7 +16,9 @@
 
 <body>
 
-  <div class="alpinejs text-slate-800" x-data="{ 
+  <!-- alpinejs -->
+
+  <div class="text-slate-800" x-data="{ 
     search: false,
     popup: false,
     sidebar: false,
@@ -28,10 +31,10 @@
     <!-- navbar -->
 
     <div
-      class="fixed h-16 flex items-center justify-between px-4 sm:px-20 lg:px-40 top-0 right-0 left-0 shadow-md text-slate-200 bg-white z-10">
+      class="fixed h-16 flex items-center justify-between px-4 sm:px-20 lg:px-40 top-0 right-0 left-0 shadow-md text-slate-200 bg-white z-30">
       <div class="flex items-center">
-        <img src="./img/arief.jpeg" alt="Arief"
-          class="rounded-full h-11 w-1h-11 border-2 border-slate-800 cursor-pointer" @click="popup = !popup">
+        <i class="text-2xl hover:text-slate-500 text-slate-800 cursor-pointer fa fa-ellipsis-vertical"
+          @click="popup = !popup"></i>
         <a href="#" class="ml-2 text-2xl font-bold text-yellow-500 hover:border-b-slate-800">Saifud<span
             class="text-slate-800">Dien</span></a>
       </div>
@@ -67,7 +70,7 @@
     <!-- sidebar -->
 
     <div @click.away="sidebar = false" x-show="sidebar"
-      class="justify-start gap-3 items-start pt-20 text-md sm:w-80 sm:pr-20 w-52 px-5 text-slate-800 font-bold fixed top-0 bottom-0  right-0 flex flex-col md:hidden shadow-lg bg-white">
+      class="justify-start gap-3 items-start pt-20 text-md sm:w-80 sm:pr-20 w-52 px-5 text-slate-800 font-bold fixed top-0 bottom-0  right-0 flex flex-col md:hidden shadow-lg bg-white z-10">
       <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500 flex items-center "
         @click="search = !search; $nextTick(() => $refs.searchBox.focus());">
         <i class="fa fa-magnifying-glass mr-2 text-yellow-500"></i>Search
@@ -83,7 +86,7 @@
     <!-- popup -->
 
     <div x-show="popup" @click.away="popup = false"
-      class="w-44 shadow-lg rounded-lg p-5 flex-col text-slate-800 font-bold justify-start gap-3 items-start fixed top-20 left-4 sm:left-20 lg:left-40 bg-white flex">
+      class="w-44 z-20 shadow-lg rounded-lg p-5 flex-col text-slate-800 font-bold justify-start gap-3 items-start fixed top-20 left-4 sm:left-20 lg:left-40 bg-white flex">
       <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500" @click="modal = true;
       $nextTick(() => $refs.modalBtn.focus());
       "><i class="fa fa-circle-user mr-2 text-yellow-500"></i>
@@ -92,6 +95,36 @@
           class="fa fa-gear mr-2 text-yellow-500"></i>Setting</a>
       <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500"><i
           class="fa fa-star mr-2 text-yellow-500"></i>Support</a>
+    </div>
+
+    <!-- todos -->
+
+    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40" x-data="todos()">
+      <h1 class="font-bold text-3xl mb-8">Todos :</h1>
+      <hr>
+
+      <div class="mt-4 rounded-lg flex-col p-4 flex -z-20 items-center shadow-md">
+        <div class="w-full relative">
+          <label for="todo">
+            <i class="fa fa-circle-plus absolute right-3 top-2 text-yellow-500 text-lg"></i>
+            <input type="text" id="todo"
+              class=" w-full h-11 p-2 pr-10 text-lg rounded-lg focus:outline-yellow-500 border  placeholder:text-slate-400 mb-4"
+              placeholder="Input a Todo..." x-model="todoTitle" @keydown.enter="addTodo()">
+          </label>
+        </div>
+        <hr>
+        <template x-for="todo in todos" :key="todo.id">
+          <div class="w-full mt-3 rounded-lg shadow flex items-center justify-between px-4 py-2">
+            <div class="font-bold flex items-center w-[95%]">
+              <input type="checkbox" x-model="todo.isFinish" class="cursor-pointer h-10 outline-yellow-500 mr-3">
+              <h3 class="text-xl w-[90%] overflow-x-auto title" x-bind:class="{ 'line-through' : todo.isFinish }"
+                x-text="todo.title"></h3>
+            </div>
+            <div class="font-bold" @click="removeTodo(todo.id)"><i class="fa fa-xmark text-xl cursor-pointer"></i>
+            </div>
+          </div>
+        </template>
+      </div>
     </div>
 
     <!-- blog -->
