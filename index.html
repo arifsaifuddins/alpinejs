@@ -15,46 +15,162 @@
 
 <body>
 
-  <!-- navbar -->
+  <div class="alpinejs text-slate-800" x-data="{ 
+    search: false,
+    popup: false,
+    sidebar: false,
+    modal: false,
+    totop: false,
+    slide: 'image1',
+    blogs: '' 
+  }" x-init="fetch('./js/blog.json').then(res => res.json()).then(get => blogs = get.blog)">
 
-  <div
-    class="fixed h-16 flex items-center justify-between px-4 sm:px-20 lg:px-40 top-0 right-0 left-0 shadow-lg text-slate-200 bg-white">
-    <div class="flex items-center">
-      <img src="./arief.jpeg " alt="Arief" class="rounded-full h-11 w-1h-11 border-2 border-slate-800 cursor-pointer">
-      <h1 class="ml-2 text-2xl font-bold text-yellow-500 underline">Saifud<span class="text-slate-800">Dien</span></h1>
+    <!-- navbar -->
+
+    <div
+      class="fixed h-16 flex items-center justify-between px-4 sm:px-20 lg:px-40 top-0 right-0 left-0 shadow-md text-slate-200 bg-white z-10">
+      <div class="flex items-center">
+        <img src="./img/arief.jpeg" alt="Arief"
+          class="rounded-full h-11 w-1h-11 border-2 border-slate-800 cursor-pointer" @click="popup = !popup">
+        <a href="#" class="ml-2 text-2xl font-bold text-yellow-500 hover:border-b-slate-800">Saifud<span
+            class="text-slate-800">Dien</span></a>
+      </div>
+      <div class="justify-between items-center md:gap-8 text-yellow-500 font-bold hidden md:flex">
+        <a href="#" class="hover:text-slate-500">
+          <i class="mr-2 fa fa-magnifying-glass "
+            @click="search = !search; $nextTick(() => $refs.searchBox.focus());"></i>
+        </a>
+        <a href="#" class="hover:text-slate-500">Blog</a>
+        <a href="#" class="hover:text-slate-500">Contact</a>
+        <a href="#" class="hover:text-slate-500"><i class="fa mr-2 fa-share-from-square "></i></a>
+      </div>
+      <div x-on:click="sidebar = !sidebar"
+        class="flex flex-col p-1 items-end justify-between h-8 cursor-pointer md:hidden ">
+        <span class="h-1 rounded-md w-7 bg-yellow-500 block"></span>
+        <span class="h-1 rounded-md w-6 bg-slate-800 block"></span>
+        <span class="h-1 rounded-md w-8 bg-yellow-500 block"></span>
+      </div>
     </div>
-    <div class="justify-between items-center md:gap-8 text-yellow-500 font-bold hidden md:flex">
-      <a href="#" class="hover:text-slate-500">Home</a>
-      <a href="#" class="hover:text-slate-500">About</a>
-      <a href="#" class="hover:text-slate-500">Contact</a>
-      <a href="#" class="hover:text-slate-500">Product</a>
+
+    <!-- searchbar -->
+
+    <div x-show="search" @click.away="search = false"
+      class="container mx-auto w-96 py-3 px-5 rounded-lg shadow-lg bg-white z-10 fixed top-20 sm:left-20 sm:right-20 lg:left-40 lg:right-40 right-4 left-4 text-lg">
+      <label for="search">
+        <i class="fa fa-magnifying-glass absolute right-8 top-6 text-yellow-500"></i>
+      </label>
+      <input type="text" id="search"
+        class="w-full h-10 p-2 pr-10 text-lg rounded-lg focus:outline-yellow-500 border placeholder:text-slate-400"
+        placeholder="Search a Blog..." x-ref="searchBox">
     </div>
-    <div class="flex flex-col p-1 items-center justify-between h-8 cursor-pointer md:hidden ">
-      <span class="h-1 rounded-md w-7 bg-yellow-500 block"></span>
-      <span class="h-1 rounded-md w-6 bg-slate-800 block"></span>
-      <span class="h-1 rounded-md w-8 bg-yellow-500 block"></span>
+
+    <!-- sidebar -->
+
+    <div @click.away="sidebar = false" x-show="sidebar"
+      class="justify-start gap-3 items-start pt-20 text-md sm:w-80 sm:pr-20 w-52 px-5 text-slate-800 font-bold fixed top-0 bottom-0  right-0 flex flex-col md:hidden shadow-lg bg-white">
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500 flex items-center "
+        @click="search = !search; $nextTick(() => $refs.searchBox.focus());">
+        <i class="fa fa-magnifying-glass mr-2 text-yellow-500"></i>Search
+      </a>
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500"><i
+          class="mr-2 fa fa-cube text-yellow-500"></i>Blog</a>
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500"><i
+          class="fa mr-2 fa-address-card text-yellow-500"></i>Contact</a>
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500"><i
+          class="fa mr-2 fa-share-from-square text-yellow-500"></i>Find Us</a>
     </div>
+
+    <!-- popup -->
+
+    <div x-show="popup" @click.away="popup = false"
+      class="w-44 shadow-lg rounded-lg p-5 flex-col text-slate-800 font-bold justify-start gap-3 items-start fixed top-20 left-4 sm:left-20 lg:left-40 bg-white flex">
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500" @click="modal = true;
+      $nextTick(() => $refs.modalBtn.focus());
+      "><i class="fa fa-circle-user mr-2 text-yellow-500"></i>
+        Profile</a>
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500"><i
+          class="fa fa-gear mr-2 text-yellow-500"></i>Setting</a>
+      <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500"><i
+          class="fa fa-star mr-2 text-yellow-500"></i>Support</a>
+    </div>
+
+    <!-- blog -->
+
+    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40">
+      <h1 class="font-bold text-3xl mb-8">Blogs :</h1>
+      <hr>
+
+      <template x-for="blog in blogs" :key="blog.id">
+        <div class="mt-4 rounded-lg p-4 flex -z-20 sm:items-start items-center shadow-md">
+          <img :src="'./img/' + blog.img" class="mr-4 rounded-lg w-32 h-32">
+          <div>
+            <h1 class="font-bold text-lg sm:mb-2" x-text="blog.title"></h1>
+            <p class="sm:block hidden" x-text="blog.body"></p>
+            <div class="sm:mt-2 mt-4 bg-yellow-500 px-4 py-1 rounded-md max-w-max font-semibold text-white">More Detail
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- modal -->
+
+    <div @click.away="modal = false" x-show="modal"
+      class="fixed top-20 left-4 right-4 sm:left-20 sm:right-20 lg:right-40 lg:left-40 bg-white p-4 items-center rounded-lg flex flex-col shadow-md  z-30">
+      <h1 class="font-bold text-3xl mb-4">Lorem ipsum dolor sit amet</h1>
+      <p class="text-center">Odio voluptatem eum voluptatibus
+        labore libero.
+        Assumenda mollitia earum soluta natus vitae praesentium culpa laboriosam distinctio excepturi repudiandae
+        impedit deleniti eum possimus itaque vero non delectus incidunt perferendis, velit nesciunt est qui
+        voluptatibus molestias doloremque? Alias voluptatem blanditiis quaerat esse. Eos vel voluptates sed quod
+        numquam expedita dolores culpa. Illum harum ab nam non minima nulla consequatur fuga sapiente incidunt vel
+        porro molestias mollitia libero, error magnam dolores excepturi quis tempora molestiae ratione exercitationem
+        amet quibusdam consectetur. Beatae veritatis libero, ratione possimus voluptatum, optio consequuntur
+        laboriosam sed id, velit dolore porro quibusdam?
+      </p>
+      <button x-on:click="modal = false" x-ref="modalBtn"
+        class="mt-4 bg-yellow-500 px-4 py-1 rounded-md max-w-max font-semibold text-white cursor-pointer">Close Modal
+        Button
+      </button>
+    </div>
+
+    <!-- slide -->
+
+    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40">
+      <h1 class="font-bold text-3xl mb-8">Slide :</h1>
+      <hr>
+
+      <div class="rounded-md mt-4 flex flex-col w-full items-center">
+        <div class="mb-3 flex w-full">
+          <img src="./img/1.jpg" class="mr-2 rounded-lg sm:w-32 sm:h-32 h-20 cursor-pointer "
+            @click.prevent="slide = 'image1'" :class="{ 'border-4 border-yellow-500' : slide === 'image1'}">
+          <img src="./img/2.jpg" class="mr-2 rounded-lg sm:w-32 sm:h-32 h-20 cursor-pointer"
+            @click.prevent="slide = 'image2'" :class="{ 'border-4 border-yellow-500' : slide === 'image2'}">
+          <img src="./img/3.jpg" class="mr-2 rounded-lg sm:w-32 sm:h-32 h-20 cursor-pointer"
+            @click.prevent="slide = 'image3'" :class="{ 'border-4 border-yellow-500' : slide === 'image3'}">
+        </div>
+        <img src="./img/1.jpg" class="w-full rounded-xl shadow-xl" x-show="slide === 'image1'">
+        <img src="./img/2.jpg" class="w-full rounded-xl shadow-xl" x-show="slide === 'image2'">
+        <img src="./img/3.jpg" class="w-full rounded-xl shadow-xl" x-show="slide === 'image3'">
+      </div>
+    </div>
+
+    <!-- to top -->
+
+    <a href="#" :class="{ 'hidden' : totop === false, 'flex' : totop === true }"
+      @scroll.window="totop = (window.pageYOffset > 500) ? true : false"
+      class="h-10 w-10 shadow-lg mt-96 rounded-full  bg-white hover:text-slate-500 fixed sm:right-20 lg:right-40 bottom-4 text-yellow-500 right-4 animate-bounce z-20">
+      <i class="fa fa-angles-up m-auto"></i>
+    </a>
+
   </div>
 
-  <!-- sidebar -->
+  <!-- footer -->
 
-  <div
-    class="justify-start gap-3 items-start pt-20 text-md sm:w-80 sm:pr-20 w-52 px-5 -z-10 text-slate-800 font-bold fixed top-0 bottom-0  -right-[100%] flex flex-col md:hidden shadow-lg bg-white">
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Home</a>
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">About</a>
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Contact</a>
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Product</a>
-  </div>
+  <div class="relative bottom-0 right-0 left-0 p-4 mt-6 text-center bg-yellow-500 font-bold text-white">Created by
+    Arief Saifuddien</div>
 
-  <!-- popup -->
-
-  <div
-    class="w-44 shadow-lg rounded-lg p-5 flex flex-col text-slate-800 font-bold justify-start gap-3 items-start absolute top-20 left-4 sm:left-20 lg:left-40 bg-white">
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Profile</a>
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Setting</a>
-    <a href="#" class="pb-4 border-b border-b-yellow-500 w-full hover:text-slate-500">Log Out</a>
-  </div>
-
+  <script src="./js/main.js"></script>
 </body>
 
 </html>

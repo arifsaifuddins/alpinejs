@@ -1,0 +1,67 @@
+{
+  "blog": [
+    {
+      "title": "Lorem ipsum dolor sit amet",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 0,
+      "isOpen": false,
+      "img": "arief.jpeg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 1",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 1,
+      "isOpen": false,
+      "img": "1.jpg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 2",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 2,
+      "isOpen": false,
+      "img": "2.jpg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 3",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 3,
+      "isOpen": false,
+      "img": "3.jpg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 4",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 4,
+      "isOpen": false,
+      "img": "arief.jpeg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 5",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 5,
+      "isOpen": false,
+      "img": "tailwind.png"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 6",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 6,
+      "isOpen": false,
+      "img": "1.jpg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 7",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 7,
+      "isOpen": false,
+      "img": "2.jpg"
+    },
+    {
+      "title": "Lorem ipsum dolor sit amet 8",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur asperiores sapiente cumque nesciunt error dolorem nihil possimus qui! Rem, cum.",
+      "id": 8,
+      "isOpen": false,
+      "img": "tailwind.png"
+    }
+  ]
+}
