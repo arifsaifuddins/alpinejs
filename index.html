@@ -103,7 +103,7 @@
     <!-- todos -->
 
     <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40" x-data="todos()"
-      x-init="todos= JSON.parse(localStorage.getItem('todos'))">
+      x-init="(JSON.parse(localStorage.getItem('todos')).length > 0) ? todos = JSON.parse(localStorage.getItem('todos')) : todos = []">
       <h1 class="font-bold text-3xl mb-5">Todos :</h1>
       <hr>
 
