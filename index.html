@@ -102,7 +102,8 @@
 
     <!-- todos -->
 
-    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40" x-data="todos()">
+    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40" x-data="todos()"
+      x-init="todos= JSON.parse(localStorage.getItem('todos'))">
       <h1 class="font-bold text-3xl mb-5">Todos :</h1>
       <hr>
 

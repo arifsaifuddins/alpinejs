@@ -1,7 +1,6 @@
 function todos() {
   return {
-    todos: JSON.parse(localStorage.getItem('todos')),
-    // todos: JSON.parse(localStorage.getItem('todos')),
+    todos: [],
     todoId: 0,
     todoTitle: '',
     addTodo() {
