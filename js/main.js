@@ -1,6 +1,7 @@
 function todos() {
   return {
-    todos: [],
+    todos: JSON.parse(localStorage.getItem('todos')),
+    // todos: JSON.parse(localStorage.getItem('todos')),
     todoId: 0,
     todoTitle: '',
     addTodo() {
@@ -14,9 +15,14 @@ function todos() {
       })
       this.todoId++
       this.todoTitle = ''
+      this.addToLocalStorage()
     },
     removeTodo(id) {
       this.todos = this.todos.filter(todo => id !== todo.id)
+      this.addToLocalStorage()
+    },
+    addToLocalStorage() {
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     }
   }
 }
