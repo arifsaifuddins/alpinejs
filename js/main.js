@@ -1,14 +1,15 @@
 function todosList() {
-  function getLocalStorage() {
-    if (localStorage.length > 0) {
-      return JSON.parse(localStorage.getItem('todos'));
-    } else if (localStorage.length == 0) {
-      return []
-    }
-  }
+ // function getLocalStorage() {
+  //  if (localStorage.length > 0) {
+  //    return JSON.parse(localStorage.getItem('todos'));
+  //  } else if (localStorage.length == 0) {
+  //    return []
+  //  }
+  // }
 
   return {
-    todos: getLocalStorage(),
+   // todos: getLocalStorage(),
+    todos: (localStorage.length == null) ? [] : JSON.parse(localStorage.getItem('todos'))
     todoId: 0,
     todoTitle: '',
     todoFinish: false,
