@@ -8,8 +8,8 @@ function todosList() {
   // }
 
   return {
-   // todos: getLocalStorage(),
-    todos: (localStorage.length == null) ? [] : JSON.parse(localStorage.getItem('todos'))
+    // todos: getLocalStorage(),
+    todos: (localStorage.length == null) ? [] : JSON.parse(localStorage.getItem('todos')),
     todoId: 0,
     todoTitle: '',
     todoFinish: false,
