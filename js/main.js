@@ -1,19 +1,36 @@
-function todos() {
+function todosList() {
+  function getLocalStorage() {
+    if (JSON.parse(localStorage.getItem('todos').length > 0)) {
+      return JSON.parse(localStorage.getItem('todos'));
+    }
+    return []
+  }
+
   return {
-    todos: [],
+    todos: getLocalStorage(),
     todoId: 0,
     todoTitle: '',
+    todoFinish: false,
     addTodo() {
       if (this.todoTitle.trim() === '') {
         return
       }
-      this.todos.push({
+      this.todos.unshift({
         id: this.todoId,
         title: this.todoTitle,
-        isFinish: false
+        isFinish: this.todoFinish
       })
       this.todoId++
       this.todoTitle = ''
+      this.addToLocalStorage()
+    },
+    finish(id) {
+      this.todos = this.todos.filter(todo => {
+        if (id == todo.id) {
+          todo.isFinish = !todo.isFinish
+        }
+        return todo
+      })
       this.addToLocalStorage()
     },
     removeTodo(id) {

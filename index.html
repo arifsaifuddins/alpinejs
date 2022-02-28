@@ -102,8 +102,7 @@
 
     <!-- todos -->
 
-    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40" x-data="todos()"
-      x-init="(JSON.parse(localStorage.getItem('todos')).length > 0) ? todos = JSON.parse(localStorage.getItem('todos')) : todos = []">
+    <div class="mt-20 mb-10 mx-auto px-4 sm:px-20 lg:px-40" x-data="todosList()">
       <h1 class="font-bold text-3xl mb-5">Todos :</h1>
       <hr>
 
@@ -120,7 +119,8 @@
         <template x-for="todo in todos" :key="todo.id">
           <div class="w-full mt-3 rounded-lg shadow flex items-center justify-between px-4 py-2">
             <div class="font-bold flex items-center w-[95%]">
-              <input type="checkbox" x-model="todo.isFinish" class="cursor-pointer h-10 outline-yellow-500 mr-3">
+              <input type="checkbox" @input="finish(todo.id)" x-model="todo.isFinish"
+                class="cursor-pointer h-10 outline-yellow-500 mr-3">
               <h3 class="text-xl w-[90%] overflow-x-scroll title" x-bind:class="{ 'line-through' : todo.isFinish }"
                 x-text="todo.title"></h3>
             </div>
