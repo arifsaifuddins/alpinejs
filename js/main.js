@@ -1,9 +1,10 @@
 function todosList() {
   function getLocalStorage() {
-    if (JSON.parse(localStorage.getItem('todos').length > 0)) {
+    if (localStorage.length > 0) {
       return JSON.parse(localStorage.getItem('todos'));
+    } else if (localStorage.length == 0) {
+      return []
     }
-    return []
   }
 
   return {
