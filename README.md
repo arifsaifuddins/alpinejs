@@ -1,1 +1,1 @@
-# alpine-cdn
+# alpine-js
